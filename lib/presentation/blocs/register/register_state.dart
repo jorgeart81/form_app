@@ -3,7 +3,7 @@ part of 'register_cubit.dart';
 enum FormStatus { invalid, posting, valid, validating }
 
 sealed class RegisterState extends Equatable {
-  final String email;
+  final Email email;
   final Password password;
   final Username username;
   final bool isValid;
@@ -19,7 +19,7 @@ sealed class RegisterState extends Equatable {
 
   RegisterInitial copyWith({
     FormStatus? status,
-    String? email,
+    Email? email,
     Password? password,
     Username? username,
     bool? isValid,
@@ -31,7 +31,7 @@ sealed class RegisterState extends Equatable {
 
 final class RegisterInitial extends RegisterState {
   const RegisterInitial({
-    super.email = '',
+    super.email = const Email.pure(),
     super.password = const Password.pure(),
     super.username = const Username.pure(),
     super.status = FormStatus.invalid,
@@ -41,7 +41,7 @@ final class RegisterInitial extends RegisterState {
   @override
   RegisterInitial copyWith({
     FormStatus? status,
-    String? email,
+    Email? email,
     Password? password,
     Username? username,
     bool? isValid,

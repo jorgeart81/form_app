@@ -51,27 +51,17 @@ class _RegisterForm extends StatelessWidget {
             CustomTextFormField(
               label: 'Nombre de usuario',
               onChange: cubit.usernameChanged,
-              errorText: state.username.isValid || state.username.isPure
-                  ? null
-                  : 'Usuario no valido',
+              errorText: state.username.errorMessage,
             ),
             CustomTextFormField(
               label: 'Correo electrónico',
               onChange: cubit.emailChanged,
-              validator: (value) {
-                if (value == null || value.trim().isEmpty) {
-                  return 'Campo requerido';
-                }
-                if (!emailRegExp.hasMatch(value)) {
-                  return 'No tiene formato de correo';
-                }
-
-                return null;
-              },
+              errorText: state.email.errorMessage,
             ),
             CustomTextFormField(
               label: 'Contraseña',
               onChange: cubit.passwordChanged,
+              errorText: state.password.errorMessage,
               obscureText: true,
             ),
 
